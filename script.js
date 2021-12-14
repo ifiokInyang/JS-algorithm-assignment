@@ -1,34 +1,20 @@
 /*Find product Function*/
-function findProduct(arr){
-    let result = []
-    arr.map((val, index)=>{
-        let container = 1
-        let container2 = 1
-        if(index !== arr.length){
-            let sliced_arr = arr.splice(index+1, arr.length)
-            sliced_arr.map((val2, index2)=>{
-                container*=val2
-                if(sliced_arr.length==index2+1){
-                    result.push(container)
-                }
-                
-            })
-        }else{
-            let sliced_arr2 = arr.splice(index, arr.length-1)
-            sliced_arr2.map((val3, index3)=>{
-                container2*=val3
-                if(sliced_arr2.length==index3+1){
-                    result.push(container2)
-                }
-                
-            })
-           
-        }
-    })
-    return result
+
+function findProduct(array) {
+    let finalArray = [];
+    let currentElement;
+    array.forEach(element => {
+        currentElement = element;
+const filteredArray = array.filter((val, i) => val != currentElement)
+const reducedArray = filteredArray.reduce((prev, curr) => prev * curr);
+finalArray.push(reducedArray);
+    });
+   
+  
+return finalArray;
 }
-let array = [1, 2, 3, 4]
-console.log(findProduct(array))
+console.log(findProduct([1,2,3,4]))
+console.log(findProduct([0,1,2,3,4]))
 
 
 /* Merge Element Function */
